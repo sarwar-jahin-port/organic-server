@@ -4,14 +4,14 @@ import JWT from "jsonwebtoken";
 
 export const registerController = async(req, res) => {
     try{
-        const {name, email, password, phone, address} = req.body;
+        const {email, password} = req.body;
         // validations
-        if(!name) return res.send({message: "Name is required."});
+        // if(!name) return res.send({message: "Name is required."});
         if(!email) return res.send({message: "Email is required."});
         if(!password) return res.send({message: "Password is required."});
-        if(!phone) return res.send({message: "Phone is required."});
-        if(!address) return res.send({message: "Address is required."});
-
+        // if(!phone) return res.send({message: "Phone is required."});
+        // if(!address) return res.send({message: "Address is required."});
+        
         // check user
         const existingUser = await userModel.findOne({email})
         // existing user
@@ -21,24 +21,25 @@ export const registerController = async(req, res) => {
                 message: "Already register please login."                
             })
         } 
-
+        
         // register
         // hash password
         const hashedPassword = await hashPassword(password);
         // save
         const user = await new userModel({
-            name, 
+            // name, 
             email, 
-            phone, 
-            address, 
+            // phone, 
+            // address, 
             password:hashedPassword
         }).save()
-
+        
         res.status(201).send({
             success: true,
             message: "User Register Successfully.",
             user
         })
+        console.log("here");
     }catch(error){
         console.log(error);
         req.status(500).send({
@@ -82,10 +83,10 @@ export const loginController = async(req, res) => {
             success: true,
             message: "Logged in successfully",
             user: {
-                name: user.name,
+                // name: user.name,
                 email: user.email,
-                phone: user.phone,
-                address: user.address
+                // phone: user.phone,
+                // address: user.address
             },
             token,
         })
