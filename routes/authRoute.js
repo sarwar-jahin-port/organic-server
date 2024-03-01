@@ -15,4 +15,4 @@ router.post("/login", loginController)
 // TEST 
 router.get("/test", requireSignIn, isAdmin, testController)
 
-export default router
+export default router;

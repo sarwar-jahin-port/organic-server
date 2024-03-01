@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"; // odm make easier to interact with mongodb
 import colors from 'colors';
 
 // connecting db with mongoose
