@@ -3,7 +3,8 @@ import colors from 'colors'; // make different color text in console. So, to und
 import dotenv from 'dotenv'; // info we don't want to share public.
 import morgan from 'morgan'; //it's a http middleware. Gives us extra information which helps us while debugging.
 import connectDB from './config/db.js'; // info related to database connection
-import authRoutes from "./routes/authRoute.js"; // all routers are here
+import authRoutes from "./routes/authRoute.js"; // all auth routers are here
+import categoryRoutes from "./routes/categoryRoutes.js"; // all category routers are here
 import cors from 'cors'; // Cross-Origin Resource Sharing a security feature between web browser and servers.
 
 // configure env
@@ -22,6 +23,7 @@ app.use(morgan('dev'));
 
 // routes
 app.use("/api/v1/auth", authRoutes); // any http req starting with /api/v1/auth will be passed to authRoutes for further process.
+app.use("/api/v1/category", categoryRoutes); 
 
 // rest api
 app.get("/", async(req , res) => {
