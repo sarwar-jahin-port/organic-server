@@ -5,6 +5,7 @@ import morgan from 'morgan'; //it's a http middleware. Gives us extra informatio
 import connectDB from './config/db.js'; // info related to database connection
 import authRoutes from "./routes/authRoute.js"; // all auth routers are here
 import categoryRoutes from "./routes/categoryRoutes.js"; // all category routers are here
+import productRoutes from "./routes/productRoute.js"; // all product routers are here
 import cors from 'cors'; // Cross-Origin Resource Sharing a security feature between web browser and servers.
 
 // configure env
@@ -24,6 +25,7 @@ app.use(morgan('dev'));
 // routes
 app.use("/api/v1/auth", authRoutes); // any http req starting with /api/v1/auth will be passed to authRoutes for further process.
 app.use("/api/v1/category", categoryRoutes); 
+app.use("/api/v1/product", productRoutes);
 
 // rest api
 app.get("/", async(req , res) => {
