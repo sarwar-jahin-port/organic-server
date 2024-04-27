@@ -5,6 +5,7 @@ import productModel from "../models/productModel.js";
 export const createProductController = async (req, res) => {
     console.log("inside createproductcontroller");
     try {
+        console.log(req.fields);
         const { title, slug, description, price, quantity, category, shipping } = req.fields;
         const { photo } = req.files;
 
